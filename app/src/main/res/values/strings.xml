@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CurrencyRates</string>
+    <string name="unable_to_load_data">Не удалось загрузить данные</string>
+</resources>
