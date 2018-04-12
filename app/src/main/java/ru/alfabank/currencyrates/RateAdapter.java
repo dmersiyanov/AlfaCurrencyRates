@@ -4,15 +4,34 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
-import ru.alfabank.currencyrates.models.Currency;
+import ru.alfabank.currencyrates.models.Currencies;
 
 public class RateAdapter extends RecyclerView.Adapter<RateAdapter.RateVH> {
 
-    private final List<Currency> items = new ArrayList<>();
+    private final List<Currencies> items = new ArrayList<>();
+    private final DecimalFormat formatter;
+
+    public RateAdapter() {
+        super();
+        formatter = new DecimalFormat();
+        formatter.setMinimumFractionDigits(2);
+        formatter.setMinimumFractionDigits(0);
+        formatter.setGroupingUsed(true);
+        formatter.setGroupingSize(3);
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols();
+        symbols.setDecimalSeparator('.');
+        symbols.setGroupingSeparator(' ');
+        formatter.setDecimalFormatSymbols(symbols);
+        formatter.setRoundingMode(RoundingMode.DOWN);
+    }
 
     @NonNull
     @Override
@@ -23,8 +42,8 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.RateVH> {
 
     @Override
     public void onBindViewHolder(@NonNull RateVH holder, int position) {
-        Currency currency = items.get(position);
-        holder.bind(currency);
+        Currencies rate = items.get(position);
+        holder.bind(rate);
     }
 
     @Override
@@ -32,20 +51,32 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.RateVH> {
         return items.size();
     }
 
-    void setItems(List<Currency> items) {
+    void setItems(List<Currencies> items) {
         this.items.clear();
         this.items.addAll(items);
         notifyDataSetChanged();
     }
 
-    static class RateVH extends RecyclerView.ViewHolder {
+    class RateVH extends RecyclerView.ViewHolder {
+        private TextView name;
+        private TextView description;
+        private TextView sellRate;
+        private TextView buyRate;
+
 
         public RateVH(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.item_rate, parent, false));
+            name = itemView.findViewById(R.id.rates_list_item_name);
+            description = itemView.findViewById(R.id.rates_list_item_description);
+            sellRate = itemView.findViewById(R.id.rates_list_item_sell_rate);
+            buyRate = itemView.findViewById(R.id.rates_list_item_buy_rate);
         }
 
-        void bind(Currency currency) {
-
+        void bind(Currencies rate) {
+            name.setText(rate.code);
+            description.setText(rate.description);
+            sellRate.setText(rate.ratesByDate.get(0).currencyRates.get(0).sellRate);
+            buyRate.setText(rate.ratesByDate.get(0).currencyRates.get(0).buyRate);
         }
     }
 }

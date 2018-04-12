@@ -1,8 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent">
 
-</FrameLayout>
+        <LinearLayout
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/rates_list_item_name"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                tools:text="USD" />
+
+            <TextView
+                android:alpha="0.5"
+                android:id="@+id/rates_list_item_description"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                tools:text="Доллар США" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/rates_list_item_sell_rate"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="112dp"
+            android:layout_width="wrap_content"
+            tools:text="65.43" />
+
+        <TextView
+            android:id="@+id/rates_list_item_buy_rate"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            tools:text="68.14" />
+    </RelativeLayout>
+</LinearLayout>

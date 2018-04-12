@@ -9,11 +9,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -23,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Api api = new Retrofit.Builder()
             .baseUrl("https://alfa-mobile.alfabank.ru/ALFAJMB/")
-            .client(new OkHttpClient.Builder().build())
+            .client(getOkHttpClient())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -58,7 +62,10 @@ public class MainActivity extends AppCompatActivity {
     private void load() {
         swipeRefreshLayout.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
-        api.loadRates("{\"operationId\":\"Currency:GetCurrencyRates\"}")
+        Map<String, String> requestBody = new HashMap<>();
+        requestBody.put("operationId", "Currency:GetCurrencyRates");
+
+        api.loadRates(requestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<RateResponse>() {
@@ -80,5 +87,13 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, R.string.unable_to_load_data, Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    public OkHttpClient getOkHttpClient() {
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        return new OkHttpClient.Builder()
+                .addInterceptor(logging)
+                .build();
     }
 }

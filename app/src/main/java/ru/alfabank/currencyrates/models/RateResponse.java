@@ -4,6 +4,9 @@ import java.util.List;
 
 public class RateResponse {
 
+    public List<Currencies> currencies;
+
     public String baseCurrency;
-    public List<Currency> currencies;
+
+    public String operationId;
 }
