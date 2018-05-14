@@ -50,6 +50,7 @@ public class MainActivity
 
         presenter.attachView(this);
         load(false);
+
     }
 
     @Override

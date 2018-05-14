@@ -1,5 +1,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
@@ -31,6 +32,14 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/rates_list_item_sell_rate"
+            app:srcCompat="@drawable/arrow_up" />
+
         <TextView
             android:id="@+id/rates_list_item_sell_rate"
             android:layout_alignParentRight="true"
@@ -40,6 +49,14 @@
             android:layout_width="wrap_content"
             tools:text="65.43" />
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/rates_list_item_buy_rate"
+            app:srcCompat="@drawable/arrow_down" />
+
         <TextView
             android:id="@+id/rates_list_item_buy_rate"
             android:layout_alignParentRight="true"
@@ -48,4 +65,5 @@
             android:layout_width="wrap_content"
             tools:text="68.14" />
     </RelativeLayout>
+
 </LinearLayout>
