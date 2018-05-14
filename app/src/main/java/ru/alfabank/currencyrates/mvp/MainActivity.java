@@ -1,4 +1,4 @@
-package ru.alfabank.currencyrates;
+package ru.alfabank.currencyrates.mvp;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,6 +12,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import ru.alfabank.currencyrates.App;
+import ru.alfabank.currencyrates.R;
 import ru.alfabank.currencyrates.models.Currencies;
 
 public class MainActivity

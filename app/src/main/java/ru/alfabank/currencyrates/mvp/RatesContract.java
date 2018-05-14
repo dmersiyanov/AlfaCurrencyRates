@@ -1,4 +1,4 @@
-package ru.alfabank.currencyrates;
+package ru.alfabank.currencyrates.mvp;
 
 import java.util.List;
 

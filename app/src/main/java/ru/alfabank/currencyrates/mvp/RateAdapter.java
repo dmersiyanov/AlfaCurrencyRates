@@ -1,4 +1,4 @@
-package ru.alfabank.currencyrates;
+package ru.alfabank.currencyrates.mvp;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +12,7 @@ import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.alfabank.currencyrates.R;
 import ru.alfabank.currencyrates.models.Currencies;
 
 public class RateAdapter extends RecyclerView.Adapter<RateAdapter.RateVH> {

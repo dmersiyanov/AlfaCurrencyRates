@@ -1,4 +1,4 @@
-package ru.alfabank.currencyrates;
+package ru.alfabank.currencyrates.mvp;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
