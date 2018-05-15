@@ -33,7 +33,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/arrow_sell"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_centerVertical="true"
@@ -42,15 +42,15 @@
 
         <TextView
             android:id="@+id/rates_list_item_sell_rate"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_height="wrap_content"
-            android:layout_marginRight="112dp"
+            android:layout_marginEnd="112dp"
             android:layout_width="wrap_content"
             tools:text="65.43" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/arrow_buy"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_centerVertical="true"
@@ -59,7 +59,7 @@
 
         <TextView
             android:id="@+id/rates_list_item_buy_rate"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"

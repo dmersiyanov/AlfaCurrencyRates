@@ -10,8 +10,8 @@ import java.util.Map;
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import ru.alfabank.currencyrates.Api;
 import ru.alfabank.currencyrates.models.RateResponse;
+import ru.alfabank.currencyrates.network.Api;
 
 public class RateRepo implements RatesContract.Repo {
 
@@ -41,8 +41,7 @@ public class RateRepo implements RatesContract.Repo {
         return cache;
     }
 
-    void getDates() {
-        String example = "2018-05-14T00:00:00.000+0300";
+    private void getDates() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault());
         Date currentDate = new Date();
         dateTo = dateFormat.format(currentDate);

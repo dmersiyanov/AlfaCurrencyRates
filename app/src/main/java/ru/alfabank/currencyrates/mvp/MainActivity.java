@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -23,7 +24,6 @@ public class MainActivity
     private RateAdapter rateAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private View progressBar;
-    private View errorTextView;
     @Inject RatesContract.Presenter presenter;
 
     @Override
@@ -46,7 +46,6 @@ public class MainActivity
         rateAdapter = new RateAdapter();
         recyclerView.setAdapter(rateAdapter);
         progressBar = findViewById(R.id.progressBar);
-        errorTextView = findViewById(R.id.errorTextView);
 
         presenter.attachView(this);
         load(false);
@@ -68,7 +67,6 @@ public class MainActivity
         if (!refresh) {
             swipeRefreshLayout.setVisibility(View.GONE);
             progressBar.setVisibility(View.VISIBLE);
-            errorTextView.setVisibility(View.GONE);
         }
     }
 
@@ -77,7 +75,8 @@ public class MainActivity
         if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
         swipeRefreshLayout.setVisibility(View.GONE);
         progressBar.setVisibility(View.GONE);
-        errorTextView.setVisibility(View.VISIBLE);
+        Toast.makeText(this, "Произошла ошибка", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -85,7 +84,6 @@ public class MainActivity
         if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
         swipeRefreshLayout.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.GONE);
-        errorTextView.setVisibility(View.GONE);
         rateAdapter.setItems(currencies);
     }
 }
