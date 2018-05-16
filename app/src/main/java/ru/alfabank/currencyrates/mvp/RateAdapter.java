@@ -101,23 +101,18 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.RateVH> {
             BigDecimal lastWeekBuyRate = new BigDecimal(rate.ratesByDate.get(7).currencyRates.get(0).buyRate);
 
             if(todaySellRate.compareTo(lastWeekSellRate) < 0){
-                arrowSell.setImageDrawable(itemView.getContext().getResources().getDrawable(R.drawable.arrow_down));
+                arrowSell.setImageDrawable(itemView.getContext().getResources().getDrawable(R.drawable.red_arrow_down));
             } else {
-                arrowSell.setImageDrawable(itemView.getContext().getResources().getDrawable(R.drawable.arrow_up));
+                arrowSell.setImageDrawable(itemView.getContext().getResources().getDrawable(R.drawable.green_arrow_up));
             }
 
             if(todayBuyRate.compareTo(lastWeekBuyRate) < 0){
-                arrowBuy.setImageDrawable(itemView.getContext().getResources().getDrawable(R.drawable.arrow_down));
+                arrowBuy.setImageDrawable(itemView.getContext().getResources().getDrawable(R.drawable.red_arrow_down));
             } else {
-                arrowBuy.setImageDrawable(itemView.getContext().getResources().getDrawable(R.drawable.arrow_up));
+                arrowBuy.setImageDrawable(itemView.getContext().getResources().getDrawable(R.drawable.green_arrow_up));
             }
 
 
         }
-
-
     }
-
-
-
 }
