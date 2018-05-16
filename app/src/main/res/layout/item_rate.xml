@@ -38,7 +38,7 @@
             android:layout_height="15dp"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/rates_list_item_sell_rate"
-            app:srcCompat="@drawable/arrow_up" />
+            app:srcCompat="@drawable/green_arrow_up" />
 
         <TextView
             android:id="@+id/rates_list_item_sell_rate"
@@ -55,7 +55,7 @@
             android:layout_height="15dp"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/rates_list_item_buy_rate"
-            app:srcCompat="@drawable/arrow_down" />
+            app:srcCompat="@drawable/red_arrow_down" />
 
         <TextView
             android:id="@+id/rates_list_item_buy_rate"
