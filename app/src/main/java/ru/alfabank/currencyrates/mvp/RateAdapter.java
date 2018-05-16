@@ -87,9 +87,6 @@ public class RateAdapter extends RecyclerView.Adapter<RateAdapter.RateVH> {
             description.setText(rate.description);
             sellRate.setText(rate.ratesByDate.get(0).currencyRates.get(0).sellRate);
             buyRate.setText(rate.ratesByDate.get(0).currencyRates.get(0).buyRate);
-
-            Log.i("RATE", rate.ratesByDate.get(0).currencyRates.get(0).sellRate);
-            Log.i("RATE", rate.ratesByDate.get(7).currencyRates.get(0).sellRate);
         }
 
         void setUpArrows(Currencies rate) {
